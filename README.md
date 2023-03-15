@@ -16,8 +16,6 @@
 
 相比于89C51，89S51最显著的优点是有一个ISP（在线可编程功能）
 
-![image-20230315103444131](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230315103444131.png)
-
 40个引脚各个功能：
 
 - 电源引脚：Vcc（5V电源），Vss（数字地）
@@ -52,8 +50,6 @@
 
 **PSW：字节地址为DOH**
 
-![image-20230315111238235](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230315111238235.png)
-
 1. **Cy：进位标志位，当有进位产生时为1，在位处理器时为，是累加器**
 2. **Ac：辅助进位标志位，使用BCD码时，当低4位向高4位有进位时为1**
 3. **F0：由用户使用的状态标志位，用指令使他置1或清0，控制程序流向**
@@ -71,21 +67,14 @@
 
 **片内4KB FLASH，地址为0000H~0FFFH，16位地址总线，片外扩至64KB时，地址为0000H~FFFFH，有5个固定单元为中断源入口地址，分别为00003H~0023H，每个依次相隔8位，分别为外部中断0，定时器0，外部中断1，定时器1，串行口**
 
-![image-20230315112839522](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230315112839522.png)
-
 - 数据存储器（分为片内片外两部分）：片内RAM最多为128B，片外可扩至64KB
 
 **程序存储器可扩展最大RAM由地址线决定，89S51地址线为16根，所以可扩展2的16次幂，即64KB，片内片外的低128B地址是相同的，但由于访问指令不同所以不冲突**
-
-![image-20230315115705939](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230315115705939.png)
 
 - 特殊功能寄存器SFR：各功能部件的控制寄存器和状态寄存器
 
 **映射在片内80H~FFH，仅有字节地址末尾为8和0的特殊功能寄存器可以进行位寻址**
 
-![image-20230315115922552](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230315115922552.png)
-
-![image-20230315122332406](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230315122332406.png)
 
 **堆栈指针SP：主要保护断点（保护跳转前程序指针）和现场保护（保护寄存器中的值），复位后默认为07H，使用时需要重新设置堆栈指针地址，一般设在片内RAM最上层**
 
@@ -104,10 +93,6 @@
 128位在RAM中20H~2FH单元中，每个单元为8位，一共128位，每一位可以置1清0，也可以进行8位的读或写
 
 剩余的位在特殊功能寄存器中，一共有11个寄存器可供位寻址，一共88位，由5位未用
-
-![image-20230315104510770](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230315104510770.png)
-
-
 
 **串行IO口属于带锁存功能的特殊寄存器，字节地址分别为80H,90H,A0H,B0H**
 
